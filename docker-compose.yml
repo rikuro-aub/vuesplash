@@ -1,0 +1,18 @@
+version: '3'
+services:
+  vuesplash_web:
+    build: .
+    volumes:
+      - ./web:/var/www/html/vuesplash
+    ports:
+      - 8081:8081
+      - 3001:3001
+  vuesplash_database:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./database:/var/lib/mysql
+    ports:
+      - 5434:5432
